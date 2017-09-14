@@ -7,10 +7,11 @@
 #' @param num.iv A number representing how many independent variables in your desired model, e.g. <3>
 #' @param num.obs A number representing how many observations are in the data set, e.g. <420>, (must match the number of rows in the data.frame in the 'data' argument of this function)
 #' @param idvars A list of characters to be treated as id variables by the embedded Amelia function, e.g. <c("id","year")
+#' @param emburn A list of numbers representing the minimum and maximum nubmer of iterations the embedded Amelia function should use until convergence is reached by the EM algorithm, e.g. c(5,50)
 #' @return Spits out a number that represents the Multiple R-Squared effect size of your imputed data set.
 #' @export
 
-mi.mult.r.sqr<-function(data=data,num.imp=num.imp,dv.list=c(NULL),num.dv=num.dv,iv.list=c(NULL),num.iv=num.iv,num.obs=num.obs,idvars=c(NULL))
+mi.mult.r.sqr<-function(data=data,num.imp=num.imp,dv.list=c(NULL),num.dv=num.dv,iv.list=c(NULL),num.iv=num.iv,num.obs=num.obs,idvars=c(NULL),emburn=c(min.iterations,max.iterations))
 {
   require(Amelia)
   #STEP 1: CREATE THE DESIRED MODEL WITH A MATRIX
@@ -70,7 +71,7 @@ mi.mult.r.sqr<-function(data=data,num.imp=num.imp,dv.list=c(NULL),num.dv=num.dv,
   #STEP 2: STANDARD AMELIA MULTIPLE IMPUTATION PROCEDURE
   #2a: initialize
   m<-num.imp #tell Amelia how mnay imputations you want
-  a.obj<-amelia(data, m=m,idvars=idvars) #create the amelia object
+  a.obj<-amelia(data, m=m,idvars=idvars,emburn=emburn) #create the amelia object
   b.out<-NULL #create a null object for b regression coefficients
   se.out<-NULL #create a null object for se of b
   n<-1
