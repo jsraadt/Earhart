@@ -1,7 +1,7 @@
 Package: Earhart
 Title: Calculate Multiple R-squared of a Data Set with Missing Data
 Version: 0.0.0.9000
-Authors@R: person("Jay S.", "Raadt", email = "jsraadt@gmail.com", role = c("aut", "cre"))
+Authors@R: person("Jay S.", "Raadt", email = "jay.raadt@unt.edu", role = c("aut", "cre"))
 Description: Earhart uses amelia::amelia and amelia::mi.meld functions to calculate multiple R-Squared effect size of a specified model (currently restricted to 1 dependent variable). Earhart finds the mean of the observation across imputations from the created amelia object, calculate y-hat values from these means and the regression coefficients from mi.meld, calculates the sum-of-squares of y-hat, calculates the sum of squares of y, and  finally calculates the R-squared effect size.
 Depends: R (>= 3.3.1)
 License: MIT
