@@ -6,7 +6,8 @@
 \usage{
 mi.mult.r.sqr(data = data, num.imp = num.imp, dv.list = c(NULL),
   num.dv = num.dv, iv.list = c(NULL), num.iv = num.iv,
-  num.obs = num.obs, idvars = c(NULL))
+  num.obs = num.obs, idvars = c(NULL), emburn = c(min.iterations,
+  max.iterations))
 }
 \arguments{
 \item{data}{A data frame with missing data, e.g. <my.data.frame>}
@@ -24,6 +25,8 @@ mi.mult.r.sqr(data = data, num.imp = num.imp, dv.list = c(NULL),
 \item{num.obs}{A number representing how many observations are in the data set, e.g. <420>, (must match the number of rows in the data.frame in the 'data' argument of this function)}
 
 \item{idvars}{A list of characters to be treated as id variables by the embedded Amelia function, e.g. <c("id","year")}
+
+\item{emburn}{A list of numbers representing the minimum and maximum nubmer of iterations the embedded Amelia function should use until convergence is reached by the EM algorithm, e.g. c(5,50)}
 }
 \value{
 Spits out a number that represents the Multiple R-Squared effect size of your imputed data set.
